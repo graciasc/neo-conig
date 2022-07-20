@@ -28,7 +28,7 @@ M.plugins = {
 }
 
 M.ui = {
-   theme = "blossom",
+   theme = "everforest",
    hl_override = require "custom.highlights",
 }
 
