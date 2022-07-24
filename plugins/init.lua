@@ -55,12 +55,16 @@ return {
          }
       end,
    },
-   ["glepnir/dashboard-nvim"] ={ 
+   ["glepnir/dashboard-nvim"] ={
      config = function() require("dashboard")
      end
      },
      ["akinsho/toggleterm.nvim"] = {
        config = function() require("toggleterm")
        end
-     }
+     },
+     ["https://github.com/folke/trouble.nvim"] = {
+        config = function() require('trouble')
+        end
+     },
 }
