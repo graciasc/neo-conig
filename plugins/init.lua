@@ -55,16 +55,34 @@ return {
          }
       end,
    },
-   ["glepnir/dashboard-nvim"] ={
-     config = function() require("dashboard")
-     end
-     },
-     ["akinsho/toggleterm.nvim"] = {
-       config = function() require("toggleterm")
-       end
-     },
-     ["https://github.com/folke/trouble.nvim"] = {
-        config = function() require('trouble')
-        end
-     },
+   ["glepnir/dashboard-nvim"] = {
+      config = function()
+         require "dashboard"
+      end,
+   },
+   ["akinsho/toggleterm.nvim"] = {
+      config = function()
+         require "toggleterm"
+      end,
+   },
+   ["https://github.com/folke/trouble.nvim"] = {
+      config = function()
+         require "trouble"
+      end,
+   },
+   ["alexghergh/nvim-tmux-navigation"] = {
+      config = function()
+         require("nvim-tmux-navigation").setup {
+            disable_when_zoomed = true, -- defaults to false
+            keybindings = {
+               left = "<C-h>",
+               down = "<C-j>",
+               up = "<C-k>",
+               right = "<C-l>",
+               last_active = "<C-\\>",
+               next = "<C-Space>",
+            },
+         }
+      end,
+   },
 }
