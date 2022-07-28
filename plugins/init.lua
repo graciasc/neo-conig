@@ -55,6 +55,7 @@ return {
          }
       end,
    },
+<<<<<<< HEAD
    ["glepnir/dashboard-nvim"] = {
       config = function()
          require "dashboard"
@@ -85,4 +86,12 @@ return {
          }
       end,
    },
+   ["glepnir/dashboard-nvim"] = { 
+     config = function() require("dashboard")
+     end
+     },
+     ["akinsho/toggleterm.nvim"] = {
+       config = function() require("toggleterm")
+       end
+     }
 }
