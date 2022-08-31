@@ -1,4 +1,17 @@
-require('mini.surround').setup {
+local logo = [[
+         ⣴⣶⣤⡤⠦⣤⣀⣤⠆     ⣈⣭⣿⣶⣿⣦⣼⣆
+          ⠉⠻⢿⣿⠿⣿⣿⣶⣦⠤⠄⡠⢾⣿⣿⡿⠋⠉⠉⠻⣿⣿⡛⣦
+                ⠈⢿⣿⣟⠦ ⣾⣿⣿⣷    ⠻⠿⢿⣿⣧⣄
+                 ⣸⣿⣿⢧ ⢻⠻⣿⣿⣷⣄⣀⠄⠢⣀⡀⠈⠙⠿⠄
+                ⢠⣿⣿⣿⠈    ⣻⣿⣿⣿⣿⣿⣿⣿⣛⣳⣤⣀⣀
+         ⢠⣧⣶⣥⡤⢄ ⣸⣿⣿⠘  ⢀⣴⣿⣿⡿⠛⣿⣿⣧⠈⢿⠿⠟⠛⠻⠿⠄
+        ⣰⣿⣿⠛⠻⣿⣿⡦⢹⣿⣷   ⢊⣿⣿⡏  ⢸⣿⣿⡇ ⢀⣠⣄⣾⠄
+       ⣠⣿⠿⠛ ⢀⣿⣿⣷⠘⢿⣿⣦⡀ ⢸⢿⣿⣿⣄ ⣸⣿⣿⡇⣪⣿⡿⠿⣿⣷⡄
+       ⠙⠃   ⣼⣿⡟  ⠈⠻⣿⣿⣦⣌⡇⠻⣿⣿⣷⣿⣿⣿ ⣿⣿⡇ ⠛⠻⢷⣄
+            ⢻⣿⣿⣄   ⠈⠻⣿⣿⣿⣷⣿⣿⣿⣿⣿⡟ ⠫⢿⣿⡆
+             ⠻⣿⣿⣿⣿⣶⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⡟⢀⣀⣤⣾⡿⠃
+]]
+require("mini.surround").setup {
   -- Number of lines within which surrounding is searched
   n_lines = 20,
 
@@ -7,34 +20,34 @@ require('mini.surround').setup {
 
   -- Pattern to match function name in 'function call' surrounding
   -- By default it is a string of letters, '_' or '.'
-  funname_pattern = '[%w_%.]+',
+  funname_pattern = "[%w_%.]+",
 
   -- Module mappings. Use `'' (empty string) to disable one.
   mappings = {
-    add = 'sa', -- Add surrounding
-    delete = 'sd', -- Delete surrounding
-    find = 'sf', -- Find surrounding (to the right)
-    find_left = 'sF', -- Find surrounding (to the left)
-    highlight = 'sh', -- Highlight surrounding
-    replace = 'sr', -- Replace surrounding
+    add = "msa", -- Add surrounding
+    delete = "msd", -- Delete surrounding
+    find = "msf", -- Find surrounding (to the right)
+    find_left = "msF", -- Find surrounding (to the left)
+    highlight = "msh", -- Highlight surrounding
+    replace = "msr", -- Replace surrounding
     -- update_n_lines = 'sn', -- Update n_lines`
-    update_n_lines = '',
+    update_n_lines = "",
   },
 }
 
 vim.g.minitrailspace_disable = true
-require('mini.trailspace').setup {
-  only_in_normal_buffers = true
+require("mini.trailspace").setup {
+  only_in_normal_buffers = true,
 }
 vim.cmd [[ autocmd BufWrite * lua MiniTrailspace.trim() ]]
 
-require('mini.bufremove').setup {}
+require("mini.bufremove").setup {}
 
-require('mini.pairs').setup {}
+require("mini.pairs").setup {}
 
-require('mini.cursorword').setup {}
+require("mini.cursorword").setup {}
 
-require('mini.indentscope').setup {
+require("mini.indentscope").setup {
   draw = {
     -- Delay (in ms) between event and start of drawing scope indicator
     delay = 100,
@@ -48,12 +61,12 @@ require('mini.indentscope').setup {
   -- Module mappings. Use `''` (empty string) to disable one.
   mappings = {
     -- Textobjects
-    object_scope = '',
-    object_scope_with_border = '',
+    object_scope = "",
+    object_scope_with_border = "",
 
     -- Motions (jump to respective border line; if not present - body line)
-    goto_top = '',
-    goto_bottom = '',
+    goto_top = "",
+    goto_bottom = "",
   },
 
   -- Options which control computation of scope. Buffer local values can be
@@ -61,7 +74,7 @@ require('mini.indentscope').setup {
   options = {
     -- Type of scope's border: which line(s) with smaller indent to
     -- categorize as border. Can be one of: 'both', 'top', 'bottom', 'none'.
-    border = 'both',
+    border = "both",
 
     -- Whether to use cursor column when computing reference indent. Useful to
     -- see incremental scopes with horizontal cursor movements.
@@ -74,5 +87,5 @@ require('mini.indentscope').setup {
   },
 
   -- Which character to use for drawing scope indicator
-  symbol = '╎',
+  symbol = "╎",
 }

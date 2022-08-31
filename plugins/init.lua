@@ -11,6 +11,38 @@ return {
       end
     end,
   },
+  ["williamboman/mason.nvim"] = {
+    ensure_installed = {
+      -- lua stuff
+      "lua-language-server",
+      "stylua",
+
+      -- web dev
+      "tsserver",
+      "css-lsp",
+      "html-lsp",
+      "typescript-language-server",
+      "deno",
+      "emmet-ls",
+      "json-lsp",
+
+      -- shell
+      "shfmt",
+      "shellcheck",
+    },
+  },
+  -- ["williamboman/nvim-lsp-installer"] = {
+  --
+  --   config = function()
+  --     after = "nvim-lsp-installer", require "custom.configs.lspconfig"
+  --   end,
+  -- },
+  ["neovim/nvim-lspconfig"] = {
+    config = function()
+      require "plugins.configs.lspconfig"
+      require "custom.configs.lspconfig"
+    end,
+  },
 
   ["jose-elias-alvarez/null-ls.nvim"] = {
     after = "nvim-lspconfig",
@@ -30,14 +62,6 @@ return {
     end,
   },
 
-  ["nvim-neorg/neorg"] = {
-    ft = "norg",
-    after = "nvim-treesitter",
-    config = function()
-      require "custom.configs.neorg"
-    end,
-  },
-
   ["nvim-treesitter/playground"] = {
     cmd = "TSCaptureUnderCursor",
     config = function()
@@ -53,11 +77,6 @@ return {
         opacity_step = 1,
         exclude_filetypes = { "NvimTree" },
       }
-    end,
-  },
-  ["akinsho/toggleterm.nvim"] = {
-    config = function()
-      require "toggleterm"
     end,
   },
   ["https://github.com/folke/trouble.nvim"] = {
@@ -80,9 +99,8 @@ return {
       }
     end,
   },
-  ["goolord/alpha-nvim"] = {
-    config = function()
-      require "alpha"
-    end,
+  ["echasnovski/mini.nvim"] = {
+    branch = "stable",
+    config = "require('custom.configs.mini')",
   },
 }

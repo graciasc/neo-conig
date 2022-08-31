@@ -30,7 +30,7 @@ M.plugins = {
 }
 
 M.ui = {
-  theme = "everforest",
+  theme = "aquarium",
   hl_override = require "custom.highlights",
 }
 
