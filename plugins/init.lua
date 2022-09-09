@@ -31,12 +31,6 @@ return {
       "shellcheck",
     },
   },
-  -- ["williamboman/nvim-lsp-installer"] = {
-  --
-  --   config = function()
-  --     after = "nvim-lsp-installer", require "custom.configs.lspconfig"
-  --   end,
-  -- },
   ["neovim/nvim-lspconfig"] = {
     config = function()
       require "plugins.configs.lspconfig"
@@ -102,5 +96,15 @@ return {
   ["echasnovski/mini.nvim"] = {
     branch = "stable",
     config = "require('custom.configs.mini')",
+  },
+  ["ThePrimeagen/harpoon"] = {
+    config = function()
+      require "custom.configs.harpoon"
+    end,
+  },
+  ["talbergs/context.nvim"] = {
+    config = function()
+      require "custom.configs.context"
+    end,
   },
 }
