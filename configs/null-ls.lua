@@ -6,15 +6,50 @@ end
 
 local b = null_ls.builtins
 
-local sources = {
+local eslint_config_files = {
+    ".eslintrc.js",
+    ".eslintrc.cjs",
+    ".eslintrc.yaml",
+    ".eslintrc.yml",
+    ".eslintrc.json",
+}
 
+local prettier_config_files = {
+    ".prettierrc",
+    ".prettierrc.js",
+    ".prettierrc.cjs",
+    "prettier.config.js",
+    "prettier.config.cjs",
+    ".prettierrc.yaml",
+    ".prettierrc.yml",
+    ".prettierrc.json",
+    ".prettierrc.json5",
+    ".prettierrc.toml",
+}
+
+local sources = {
+---- Custom
+    b.diagnostics.eslint_d.with {
+      extra_filetypes = { "svelte" },
+      condition = function(utils)
+        return utils.root_has_file(eslint_config_files)
+      end,
+    },
+    b.code_actions.eslint_d.with {
+      extra_filetypes = { "svelte" },
+      condition = function(utils)
+        return utils.root_has_file(eslint_config_files)
+      end,
+    },
+    b.formatting.prettierd.with {
+      condition = function(utils)
+        return utils.root_has_file(prettier_config_files)
+      end,
+    },
   -- webdev stuff
   -- b.formatting.deno_fmt,
   -- b.formatting.prettier.with { filetypes = { "html", "markdown", "css" } },
-  b.diagnostics.eslint_d,
   b.diagnostics.stylelint,
-  b.code_actions.eslint_d,
-  b.formatting.prettierd,
   -- Lua
   b.formatting.stylua,
 

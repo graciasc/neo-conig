@@ -34,9 +34,9 @@ M.shade = {
 
 M.harpoon = {
   n = {
-    ["<leader>ha"] = { "<cmd>lua require('harpoon.mark').add_file()<CR>", "add file" },
+    ["<leader>ha"] = { "<cmd>lua require('harpoon.mark').add_file()<CR>", " add file" },
     ["<leader>he"] = { "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>", "toggle menu" },
-    ["<leader>h"] = { "<cmd>lua require('harpoon.ui').nav_file(vim.v.count1)<CR>", "go to file last file" },
+    ["<leader>hm"] = { "<cmd>lua require('harpoon.ui').nav_file(vim.v.count1)<CR>", "go to file last file" },
     ["<leader>1"] = { "<cmd>lua require('harpoon.ui').nav_file(1)<CR>", "file 1" },
     ["<leader>2"] = { "<cmd>lua require('harpoon.ui').nav_file(2)<CR>", "file 2" },
     ["<leader>3"] = { "<cmd>lua require('harpoon.ui').nav_file(3)<CR>", "file 3" },

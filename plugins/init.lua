@@ -107,4 +107,10 @@ return {
       require "custom.configs.context"
     end,
   },
+  ["ggandor/lightspeed.nvim"] = {
+    requires = { "tpope/vim-repeat" },
+    config = function()
+      require "lightspeed"
+    end,
+  },
 }
