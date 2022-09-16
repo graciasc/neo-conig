@@ -32,6 +32,13 @@ M.shade = {
   },
 }
 
+M.disabled = {
+  n = {
+    ["<leader>h"] = "",
+    ["<leader>v"] = "",
+  },
+}
+
 M.harpoon = {
   n = {
     ["<leader>ha"] = { "<cmd>lua require('harpoon.mark').add_file()<CR>", " add file" },
