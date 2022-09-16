@@ -113,4 +113,9 @@ return {
       require "lightspeed"
     end,
   },
+  ["catppuccin/nvim"] = {
+    config = function()
+      require "catppuccin"
+    end,
+  },
 }
