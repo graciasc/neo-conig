@@ -36,6 +36,8 @@ M.disabled = {
   n = {
     ["<leader>h"] = "",
     ["<leader>v"] = "",
+    ["<leader>tk"] = "",
+
   },
 }
 
@@ -49,6 +51,14 @@ M.harpoon = {
     ["<leader>3"] = { "<cmd>lua require('harpoon.ui').nav_file(3)<CR>", "file 3" },
     ["<leader>4"] = { "<cmd>lua require('harpoon.ui').nav_file(4)<CR>", "file 4" },
   },
+}
+
+M.telescope = {
+n = {
+
+    ["<leader>ch"] = { "<cmd> Telescope keymaps <CR>", "show keys" },
+  }
+}
 }
 
 return M
