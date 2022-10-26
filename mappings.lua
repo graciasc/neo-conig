@@ -4,7 +4,21 @@ local M = {}
 -- M.disabled = {
 --    "<C-n>",
 -- }
-
+M.formatting = {
+  n = {
+    ["<leader>fl"] = {
+      "<cmd> :%!eslint_d --stdin --fix-to-stdout --stdin-filename %<CR>`F",
+      " Autofix entire buffer with eslint_d",
+    },
+  },
+  v = {
+    -- Currently not doing range formatting
+    ["<leader>fl"] = {
+      "<cmd> :%!eslint_d --stdin --fix-to-stdout --stdin-filename %<CR>gv",
+      " Autofix visual selection with eslint_d",
+    },
+  },
+}
 M.truzen = {
   n = {
     ["<leader>ta"] = { "<cmd> TZAtaraxis <CR>", "   truzen ataraxis" },
@@ -37,7 +51,6 @@ M.disabled = {
     ["<leader>h"] = "",
     ["<leader>v"] = "",
     ["<leader>tk"] = "",
-
   },
 }
 
@@ -54,10 +67,10 @@ M.harpoon = {
 }
 
 M.telescope = {
-n = {
+  n = {
 
     ["<leader>ch"] = { "<cmd> Telescope keymaps <CR>", "show keys" },
-  }
+  },
 }
 
 return M
