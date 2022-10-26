@@ -59,6 +59,5 @@ n = {
     ["<leader>ch"] = { "<cmd> Telescope keymaps <CR>", "show keys" },
   }
 }
-}
 
 return M

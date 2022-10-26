@@ -25,6 +25,7 @@ return {
       "deno",
       "emmet-ls",
       "json-lsp",
+      "eslint-lsp",
 
       -- shell
       "shfmt",
@@ -107,12 +108,12 @@ return {
       require "custom.configs.context"
     end,
   },
-  ["ggandor/lightspeed.nvim"] = {
-    requires = { "tpope/vim-repeat" },
-    config = function()
-      require "lightspeed"
-    end,
-  },
+  -- ["ggandor/lightspeed.nvim"] = {
+  --   requires = { "tpope/vim-repeat" },
+  --   config = function()
+  --     require "lightspeed"
+  --   end,
+  -- },
   ["catppuccin/nvim"] = {
     config = function()
       require "catppuccin"

@@ -7,45 +7,47 @@ end
 local b = null_ls.builtins
 
 local eslint_config_files = {
-    ".eslintrc.js",
-    ".eslintrc.cjs",
-    ".eslintrc.yaml",
-    ".eslintrc.yml",
-    ".eslintrc.json",
+  ".eslintrc.js",
+  ".eslintrc.cjs",
+  ".eslintrc.yaml",
+  ".eslintrc.yml",
+  ".eslintrc.json",
 }
 
 local prettier_config_files = {
-    ".prettierrc",
-    ".prettierrc.js",
-    ".prettierrc.cjs",
-    "prettier.config.js",
-    "prettier.config.cjs",
-    ".prettierrc.yaml",
-    ".prettierrc.yml",
-    ".prettierrc.json",
-    ".prettierrc.json5",
-    ".prettierrc.toml",
+  ".prettierrc",
+  ".prettierrc.js",
+  ".prettierrc.cjs",
+  "prettier.config.js",
+  "prettier.config.cjs",
+  ".prettierrc.yaml",
+  ".prettierrc.yml",
+  ".prettierrc.json",
+  ".prettierrc.json5",
+  ".prettierrc.toml",
 }
 
 local sources = {
----- Custom
-    b.diagnostics.eslint_d.with {
-      extra_filetypes = { "svelte" },
-      condition = function(utils)
-        return utils.root_has_file(eslint_config_files)
-      end,
-    },
-    b.code_actions.eslint_d.with {
-      extra_filetypes = { "svelte" },
-      condition = function(utils)
-        return utils.root_has_file(eslint_config_files)
-      end,
-    },
-    b.formatting.prettierd.with {
-      condition = function(utils)
-        return utils.root_has_file(prettier_config_files)
-      end,
-    },
+  ---- Custom
+  b.diagnostics.eslint_d.with {
+    extra_filetypes = { "svelte" },
+    condition = function(utils)
+      return utils.root_has_file(eslint_config_files)
+    end,
+  },
+  b.code_actions.eslint_d.with {
+    extra_filetypes = { "svelte" },
+    condition = function(utils)
+      return utils.root_has_file(eslint_config_files)
+    end,
+  },
+
+  b.formatting.eslint_d,
+  -- b.formatting.prettierd.with {
+  --   condition = function(utils)
+  --     return utils.root_has_file(prettier_config_files)
+  --   end,
+  -- },
   -- webdev stuff
   -- b.formatting.deno_fmt,
   -- b.formatting.prettier.with { filetypes = { "html", "markdown", "css" } },
@@ -64,6 +66,11 @@ local sources = {
 null_ls.setup {
   debug = true,
   sources = sources,
+  -- on_attach = function(client)
+  --   if client.resolved_capabilities.document_formatting then
+  --     vim.lsp.buf.format { async = true }
+  --   end
+  -- end,
   on_attach = function(client, bufnr)
     if client.supports_method "textDocument/formatting" then
       vim.api.nvim_clear_autocmds { group = augroup, buffer = bufnr }
@@ -72,7 +79,7 @@ null_ls.setup {
         buffer = bufnr,
         callback = function()
           -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
-          vim.lsp.buf.formatting_sync()
+            vim.lsp.buf.format { async = true }
         end,
       })
     end
