@@ -116,8 +116,8 @@ return {
   -- },
   --
 ["mfussenegger/nvim-dap"] = {
-config = function()
-      require("custom.configs.nvim-dap")
+    config = function()
+      require("custom.configs.nvim-dap-js")
     end,
   },
 	["rcarriga/nvim-dap-ui"] = {
@@ -127,12 +127,32 @@ config = function()
     end
 	},
 	["theHamsta/nvim-dap-virtual-text"] = {
-		requires = { "mfussenegger/nvim-dap", "nvim-treesitter/nvim-treesitter" },
+	   config = function()
+      require("nvim-dap-virtual-text").setup()
+     end,
+    after = "nvim-dap",	requires = { "mfussenegger/nvim-dap", "nvim-treesitter/nvim-treesitter" },
 	},
 	["nvim-telescope/telescope-dap.nvim"] = {
+    -- after = 'nvim-telescope/telescope.nvim',
 		requires = { "mfussenegger/nvim-dap", "nvim-treesitter/nvim-treesitter", "nvim-telescope/telescope.nvim" },
 		before = { "telescope.nvim" },
+    -- config = function()
+    -- require('telescope').load_extension('dap')
+    -- end,
 	},
+  ["mxsdev/nvim-dap-vscode-js"] = {
+    requires = {"mfussenegger/nvim-dap"}
+  },
+  ["microsoft/vscode-js-debug"] = {
+    opt = true,
+    run = "npm install --legacy-peer-deps && npm run compile",
+  },
+   ["luukvbaal/stabilize.nvim"] = {
+    config = function()
+      require("stabilize").setup()
+    end,
+    event = { "WinNew", "WinLeave" },
+  },
   ["catppuccin/nvim"] = {
     config = function()
       require "catppuccin"

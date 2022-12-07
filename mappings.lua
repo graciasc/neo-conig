@@ -73,4 +73,24 @@ M.telescope = {
   },
 }
 
+M.dap = {
+  n = {
+    ["<F5>"] = { "<cmd>lua require'dap'.continue()<CR>", "continue" },
+    ["<F10>"] = { "<cmd>lua require'dap'.step_over()<CR>", "step over" },
+    ["<F11>"] = { "<cmd>lua require'dap'.step_into()<CR>", "step into" },
+    ["<F12>"] = { "<cmd>lua require'dap'.step_out()<CR", "step out" },
+    ["<leader> b"] = { "<cmd>lua require'dap'.toggle_breakpoint()<CR>", "toggle breakpoint" },
+    ["<leader> B"] = {
+      "<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>",
+      "break point condition",
+    },
+    ["<leader>lp"] = {
+      "<cmd>lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>",
+      "log point message",
+    },
+    ["<leader>dr"] = { "<cmd>lua require'dap'.repl.open()<CR>", "repl open" },
+    ["<leader>dl"] = { "<cmd>lua require'dap'.run_last()<CR>", "run last" },
+  },
+}
+
 return M
