@@ -114,6 +114,25 @@ return {
   --     require "lightspeed"
   --   end,
   -- },
+  --
+["mfussenegger/nvim-dap"] = {
+config = function()
+      require("custom.configs.nvim-dap")
+    end,
+  },
+	["rcarriga/nvim-dap-ui"] = {
+		requires = "mfussenegger/nvim-dap",
+    config = function()
+      require("dapui").setup()
+    end
+	},
+	["theHamsta/nvim-dap-virtual-text"] = {
+		requires = { "mfussenegger/nvim-dap", "nvim-treesitter/nvim-treesitter" },
+	},
+	["nvim-telescope/telescope-dap.nvim"] = {
+		requires = { "mfussenegger/nvim-dap", "nvim-treesitter/nvim-treesitter", "nvim-telescope/telescope.nvim" },
+		before = { "telescope.nvim" },
+	},
   ["catppuccin/nvim"] = {
     config = function()
       require "catppuccin"
