@@ -34,7 +34,6 @@ require("mini.surround").setup {
     update_n_lines = "",
   },
 }
-
 vim.g.minitrailspace_disable = true
 require("mini.trailspace").setup {
   only_in_normal_buffers = true,

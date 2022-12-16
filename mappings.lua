@@ -70,6 +70,7 @@ M.telescope = {
   n = {
 
     ["<leader>ch"] = { "<cmd> Telescope keymaps <CR>", "show keys" },
+    ["<leader>cr"] = { "<cmd> Telescope resume <CR>", "show last search session" },
   },
 }
 
