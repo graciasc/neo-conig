@@ -4,7 +4,7 @@ local M = {}
 -- M.disabled = {
 --    "<C-n>",
 -- }
-M.formatting = {
+M.eslint_d = {
   n = {
     ["<leader>fl"] = {
       "<cmd> :%!eslint_d --stdin --fix-to-stdout --stdin-filename %<CR>`F",
@@ -70,27 +70,27 @@ M.telescope = {
   n = {
 
     ["<leader>ch"] = { "<cmd> Telescope keymaps <CR>", "show keys" },
-    ["<leader>cr"] = { "<cmd> Telescope resume <CR>", "show last search session" },
+    ["<leader>fr"] = { "<cmd> Telescope resume <CR>", "show last search session" },
   },
 }
 
 M.dap = {
   n = {
-    ["<F5>"] = { "<cmd>lua require'dap'.continue()<CR>", "continue" },
-    ["<F10>"] = { "<cmd>lua require'dap'.step_over()<CR>", "step over" },
-    ["<F11>"] = { "<cmd>lua require'dap'.step_into()<CR>", "step into" },
-    ["<F12>"] = { "<cmd>lua require'dap'.step_out()<CR", "step out" },
-    ["<leader> b"] = { "<cmd>lua require'dap'.toggle_breakpoint()<CR>", "toggle breakpoint" },
+    ["<F5>"] = { "<cmd>lua require'dap'.continue()<CR>", "debugger continue" },
+    ["<F10>"] = { "<cmd>lua require'dap'.step_over()<CR>", "debugger step over" },
+    ["<F11>"] = { "<cmd>lua require'dap'.step_into()<CR>", "debugger step into" },
+    ["<F12>"] = { "<cmd>lua require'dap'.step_out()<CR", "debugger step out" },
+    ["<leader> b"] = { "<cmd>lua require'dap'.toggle_breakpoint()<CR>", "debugger toggle breakpoint" },
     ["<leader> B"] = {
       "<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>",
       "break point condition",
     },
     ["<leader>lp"] = {
       "<cmd>lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>",
-      "log point message",
+      "debugger log point message",
     },
-    ["<leader>dr"] = { "<cmd>lua require'dap'.repl.open()<CR>", "repl open" },
-    ["<leader>dl"] = { "<cmd>lua require'dap'.run_last()<CR>", "run last" },
+    ["<leader>dr"] = { "<cmd>lua require'dap'.repl.open()<CR>", "debugger uirepl open" },
+    ["<leader>dl"] = { "<cmd>lua require'dap'.run_last()<CR>", "debugger run last" },
   },
 }
 
