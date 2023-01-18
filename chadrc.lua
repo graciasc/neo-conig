@@ -3,9 +3,7 @@ local M = {}
 local override = require "custom.configs.override"
 --
 M.plugins = {
-  status = {
-    dashboard = true,
-  },
+  status = {},
   options = {
     lspconfig = {
       setup_lspconf = "custom.configs.lspconfig",

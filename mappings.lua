@@ -73,7 +73,6 @@ M.telescope = {
     ["<leader>fr"] = { "<cmd> Telescope resume <CR>", "show last search session" },
   },
 }
-
 M.dap = {
   n = {
     ["<F5>"] = { "<cmd>lua require'dap'.continue()<CR>", "debugger continue" },
@@ -91,6 +90,23 @@ M.dap = {
     },
     ["<leader>dr"] = { "<cmd>lua require'dap'.repl.open()<CR>", "debugger uirepl open" },
     ["<leader>dl"] = { "<cmd>lua require'dap'.run_last()<CR>", "debugger run last" },
+  },
+}
+
+M.presistent = {
+  n = {
+    ["<leader>qs"] = {
+      "<cmd>lua require'persistence'.load()<CR>",
+      "persistence restore the session for the current directory",
+    },
+    ["<leader>ql"] = {
+      "<cmd>lua require'persistence'.load({ last = true })<CR>",
+      "persistence restore the last session",
+    },
+    ["<leader>qd"] = {
+      "<cmd>lua require'persistence'.stop()<CR>",
+      "presistent stop Persistence => session won't be saved on exit",
+    },
   },
 }
 

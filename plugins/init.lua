@@ -1,5 +1,7 @@
 return {
-
+  ["goolord/alpha-nvim"] = {
+    disable = false,
+  },
   ["windwp/nvim-ts-autotag"] = {
     ft = { "html", "javascriptreact" },
     after = "nvim-treesitter",
@@ -74,9 +76,16 @@ return {
       }
     end,
   },
-  ["https://github.com/folke/trouble.nvim"] = {
+  --TODO: Remove this if I don't use this
+  ["folke/trouble.nvim"] = {
     config = function()
       require "trouble"
+    end,
+  },
+  ["folke/todo-comments.nvim"] = {
+    requires = "nvim-lua/plenary.nvim",
+    config = function()
+      require "custom.configs.todo-comments"
     end,
   },
   ["alexghergh/nvim-tmux-navigation"] = {
@@ -115,39 +124,41 @@ return {
   --   end,
   -- },
   --
-["mfussenegger/nvim-dap"] = {
+  ["mfussenegger/nvim-dap"] = {
     config = function()
-      require("custom.configs.nvim-dap-js")
+      require "custom.configs.nvim-dap-js"
     end,
   },
-	["rcarriga/nvim-dap-ui"] = {
-		requires = "mfussenegger/nvim-dap",
+  ["rcarriga/nvim-dap-ui"] = {
+    requires = "mfussenegger/nvim-dap",
     config = function()
       require("dapui").setup()
-    end
-	},
-	["theHamsta/nvim-dap-virtual-text"] = {
-	   config = function()
+    end,
+  },
+  ["theHamsta/nvim-dap-virtual-text"] = {
+    config = function()
       require("nvim-dap-virtual-text").setup()
-     end,
-    after = "nvim-dap",	requires = { "mfussenegger/nvim-dap", "nvim-treesitter/nvim-treesitter" },
-	},
-	["nvim-telescope/telescope-dap.nvim"] = {
+    end,
+    after = "nvim-dap",
+    requires = { "nvim-treesitter/nvim-treesitter" },
+  },
+  ["nvim-telescope/telescope-dap.nvim"] = {
     -- after = 'nvim-telescope/telescope.nvim',
-		requires = { "mfussenegger/nvim-dap", "nvim-treesitter/nvim-treesitter", "nvim-telescope/telescope.nvim" },
-		before = { "telescope.nvim" },
+    requires = { "mfussenegger/nvim-dap", "nvim-treesitter/nvim-treesitter", "nvim-telescope/telescope.nvim" },
+    before = { "telescope.nvim" },
     -- config = function()
     -- require('telescope').load_extension('dap')
     -- end,
-	},
+  },
   ["mxsdev/nvim-dap-vscode-js"] = {
-    requires = {"mfussenegger/nvim-dap"}
+    requires = { "mfussenegger/nvim-dap" },
   },
-  ["microsoft/vscode-js-debug"] = {
-    opt = true,
-    run = "npm install --legacy-peer-deps && npm run compile",
-  },
-   ["luukvbaal/stabilize.nvim"] = {
+  --TODO: might not be needed
+  -- ["microsoft/vscode-js-debug"] = {
+  --   opt = true,
+  --   run = "npm install --legacy-peer-deps && npm run compile",
+  -- },
+  ["luukvbaal/stabilize.nvim"] = {
     config = function()
       require("stabilize").setup()
     end,
@@ -156,6 +167,33 @@ return {
   ["catppuccin/nvim"] = {
     config = function()
       require "catppuccin"
+    end,
+  },
+  ["chentoast/marks.nvim"] = {
+    config = function()
+      require("marks").setup()
+    end,
+  },
+  ["rcarriga/nvim-notify"] = {
+    init = function()
+      vim.notify = function(...)
+        vim.notify = require "notify"
+        vim.notify(...)
+      end
+    end,
+    config = function()
+      local notify = require "notify"
+      notify.setup {
+        stages = "slide",
+      }
+      vim.notify = notify
+    end,
+  },
+  ["folke/persistence.nvim"] = {
+    event = "BufReadPre", -- this will only start session saving when an actual file was opened
+    module = "persistence",
+    config = function()
+      require("persistence").setup()
     end,
   },
 }
