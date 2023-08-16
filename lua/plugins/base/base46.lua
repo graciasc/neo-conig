@@ -1,3 +1,4 @@
+local ok, base46 = pcall(require, "base46")
 return {
   "bluz71/vim-nightfly-guicolors",
   "lunarvim/darkplus.nvim",
@@ -11,12 +12,10 @@ return {
     lazy = false,
     priority = 1000,
     config = function()
-      --  local ok, base46 = pcall(require, "base46")
-
-      --  if ok then
-      --    base46.load_theme()
-      --  end
-      vim.cmd("colorscheme catppuccin")
+      if ok then
+        base46.load_theme()
+      end
+      vim.cmd("colorscheme catppuccin-latte")
     end,
   },
 }
