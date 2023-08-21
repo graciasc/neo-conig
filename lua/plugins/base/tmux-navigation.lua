@@ -1,5 +1,6 @@
 return {
   "alexghergh/nvim-tmux-navigation",
+  "aserowy/tmux.nvim",
   opts = {
     disable_when_zoomed = true, -- defaults to false
     keybindings = {

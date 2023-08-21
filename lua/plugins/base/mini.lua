@@ -12,13 +12,19 @@ local logo = [[
             ⢻⣿⣿⣄   ⠈⠻⣿⣿⣿⣷⣿⣿⣿⣿⣿⡟ ⠫⢿⣿⡆
              ⠻⣿⣿⣿⣿⣶⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⡟⢀⣀⣤⣾⡿⠃
 ]]
+
 return {
+  "windwp/nvim-ts-autotag",
+  "chentoast/marks.nvim",
   "echasnovski/mini.nvim",
   branch = "stable",
   init = function()
     vim.g.minitrailspace_disable = true
   end,
   config = function()
+    require("mini.starter").setup({
+      header = logo,
+    })
     require("mini.pairs").setup({
       -- In which modes mappings from this `config` should be created
       modes = { insert = true, command = false, terminal = false },
@@ -87,8 +93,11 @@ return {
       -- Which character to use for drawing scope indicator
       symbol = "╎",
     })
-    require("mini.cursorword").setup({})
-    require("mini.bufremove").setup({})
+    require("mini.cursorword").setup()
+    require("mini.starter").setup({
+      header = logo,
+    })
+    require("mini.bufremove").setup()
     require("mini.trailspace").setup({
       only_in_normal_buffers = true,
     })
