@@ -68,7 +68,7 @@ return {
     })
 
     -- Handles telescope colors
-    local colors = require("catppuccin.palettes").get_palette()
+    local colors = require("catppuccin.palettes").get_palette(frappe)
     local TelescopeColor = {
       TelescopeMatching = { fg = colors.flamingo },
       TelescopeSelection = { fg = colors.text, bg = colors.surface0, bold = true },
